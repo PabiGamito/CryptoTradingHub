@@ -84,13 +84,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        public boolean onCreateOptionsMenu(Menu menu) {
-
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.main_toolbar, menu);
-            return true;
-        }
-
         // Get data
 //        DownloadTask task = new DownloadTask();
 //        task.execute();

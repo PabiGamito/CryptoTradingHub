@@ -19,10 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".pairView" />
-        <activity
-            android:name=".PairListing"
-            android:label="@string/title_activity_pair_listing"
-            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

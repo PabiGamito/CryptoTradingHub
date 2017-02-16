@@ -15,7 +15,8 @@
         android:padding="16dp"
         android:background="#FFFFFF"
         android:id="@+id/pairContainerLinearLayout"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:layout_marginTop="8dp">
 
         <LinearLayout
             android:orientation="vertical"
