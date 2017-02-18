@@ -10,19 +10,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
         android:padding="16dp"
         android:background="#FFFFFF"
         android:id="@+id/pairContainerLinearLayout"
-        android:weightSum="3"
+        android:weightSum="10"
         android:layout_marginTop="8dp">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="4">
 
             <TextView
                 android:text="TextView"
@@ -30,27 +28,31 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/name"
                 android:textStyle="bold"
-                android:paddingBottom="5dp" />
+                android:textSize="18sp"
+                android:textAllCaps="true" />
             <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/exchange"
-                android:paddingTop="5dp" />
+                android:textAllCaps="true"
+                android:fontFamily="sans-serif-condensed" />
         </LinearLayout>
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:layout_height="match_parent" />
         <TextView
             android:text="TextView"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:id="@+id/price"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textEnd"
+            android:gravity="center"
+            android:paddingRight="1dp"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
