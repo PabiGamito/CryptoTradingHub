@@ -1,8 +1,10 @@
 package com.pablogamito.cryptotradinghub;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static android.R.attr.fragment;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentByTag("navBar");
+        if (fragment == null) {
+            FragmentTransaction ft = fm.beginTransaction();
+            fragment = new side_navbar();
+            ft.add(R.id.navbar, fragment, "navBar");
+            ft.commit();
+        }
 
         // Initialize toolbar
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -109,6 +122,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openMenu(View view) {
-        
+
     }
 }

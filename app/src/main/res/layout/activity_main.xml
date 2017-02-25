@@ -9,6 +9,12 @@
     android:background="#F5F6FA">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/navbar">
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
