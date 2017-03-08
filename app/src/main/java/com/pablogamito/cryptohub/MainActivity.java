@@ -1,9 +1,11 @@
 package com.pablogamito.cryptohub;
 
-import android.app.ActionBar;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.content.Intent;
+import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -48,35 +50,38 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
-                        case R.id.action_portfolio:
+                        case R.id.action_user:
+                            UserFragment userFragment = new UserFragment();
+                            loadMainContentFragment(userFragment, "userFragment");
                             return true;
                         case R.id.action_trade:
+                            TradeFragment tradeFragment = new TradeFragment();
+                            loadMainContentFragment(tradeFragment, "userFragment");
                             return true;
-                        case R.id.action_account:
+                        case R.id.action_notifications:
                             return true;
                     }
                     return false;
                 }
             });
 
-        // Initialize gridView
-        CryptoHub app = (CryptoHub)this.getApplication();
-        final ArrayList<TradingPair> tradingPairs = CryptoHub.getPairs();
-        final ListView pairsListView = (ListView) findViewById(R.id.pairsListView);
-        final PairsArrayAdapter pairsArrayAdapter = new PairsArrayAdapter(this, tradingPairs);
-        pairsListView.setAdapter(pairsArrayAdapter);
+        // Initialize default view
+        UserFragment userFragment = new UserFragment();
+        loadMainContentFragment(userFragment, "userFragment");
+    }
 
-        pairsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                // Create a new activity with an intent: show full screen pair view
-                Intent intent = new Intent(MainActivity.this, PairView.class);
-                // Pass data to the new intent
-                intent.putExtra("EXTRA_PAIR_ID", Integer.toString(position) );
-                startActivity(intent);
+    public void loadMainContentFragment(Fragment frag, String tag) {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.content_main);
+        if(fragment == null) {
+            ft.add(R.id.content_main, frag, tag);
+        } else {
+            ft.replace(R.id.content_main, frag, tag);
+        }
+        ft.addToBackStack(null);
 
-                // TODO: On click make row grow to full size filling up with chart and buy and sell button with current text going to top of page
-            }
-        });
+        ft.commit();
     }
 
     @Override
