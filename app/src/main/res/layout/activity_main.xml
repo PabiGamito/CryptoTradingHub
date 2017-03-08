@@ -1,60 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pablogamito.cryptotradinghub.MainActivity"
-    android:background="#F5F6FA">
+    android:layout_weight="1"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <!-- App bar main contains and displays main content -->
+    <include layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/navbar">
-    </RelativeLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-    <RelativeLayout
-        android:id="@+id/toolbar"
+    <include
+        layout="@layout/app_navigation_main"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/material_menu"
-            android:id="@+id/openMenu"
-            android:layout_weight="1"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true"
-            android:onClick="openMenu" />
-
-        <SearchView
-            android:layout_height="match_parent"
-            app:queryHint="Search"
-            android:gravity="right"
-            android:layout_width="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true">
-        </SearchView>
-
-    </RelativeLayout>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:id="@+id/pairsListView"
-        android:dividerHeight="0dp"
-        android:divider="@android:color/transparent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/toolbar" />
+        android:layout_gravity="bottom" />
 
-</RelativeLayout>
+</LinearLayout>
